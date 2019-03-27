@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+interface Movie {
+  title: string;
+  id: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -7,4 +13,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  movies: Movie[] = [];
+
+  constructor(private readonly router: Router) {
+  }
+
+  getMovie(search: string): void {
+    this.movies = search.length > 2 ? [{title: 'search', id: '1'}] : [];
+  }
 }
